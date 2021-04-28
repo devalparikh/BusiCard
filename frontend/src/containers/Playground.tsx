@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import BootstrapButton from 'react-bootstrap/Button';
 
 interface iPlayground {
     test: false;
@@ -19,7 +20,7 @@ function Playground(props: iPlayground) {
     background: papayawhip;
     `;
 
-    const Button = styled.button<any>`
+    const Button = styled(BootstrapButton) <any>`
     /* Adapt the colors based on primary prop */
     background: ${props => props.primary ? "palevioletred" : "white"};
     color: ${props => props.primary ? "white" : "palevioletred"};
@@ -35,7 +36,7 @@ function Playground(props: iPlayground) {
     `;
 
     const Input = styled.input`
-    padding: 0.5em;
+    padding: .5em;
     margin: 0.5em;
     color: palevioletred;
     background: papayawhip;
@@ -88,6 +89,7 @@ function Playground(props: iPlayground) {
             <Button primary>Primary</Button>
             <Wrapper2>
                 <Input placeholder="type something" />
+                <BootstrapButton>Bootstrap Button</BootstrapButton>
             </Wrapper2>
             <Link href="#">
                 <Icon viewBox="0 0 20 20">
