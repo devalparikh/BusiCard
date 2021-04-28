@@ -16,7 +16,7 @@ function Playground(props: iPlayground) {
 
     // Create a Wrapper component that'll render a <section> tag with some styles
     const Wrapper = styled.section`
-    padding: 4em;
+    padding: 4em 0 4em 0;
     background: papayawhip;
     `;
 
@@ -44,7 +44,7 @@ function Playground(props: iPlayground) {
     border-radius: 3px;
     `;
 
-    const Wrapper2 = styled.section`
+    const CenterWrapper = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,21 +82,36 @@ function Playground(props: iPlayground) {
 
     return (
         <div className="App">
+            {/* Example Components */}
             <Wrapper>
                 <Title> Hello World! </Title>
             </Wrapper>
             <Button>Normal</Button>
             <Button primary>Primary</Button>
-            <Wrapper2>
+            <CenterWrapper>
                 <Input placeholder="type something" />
                 <BootstrapButton>Bootstrap Button</BootstrapButton>
-            </Wrapper2>
+            </CenterWrapper>
             <Link href="#">
                 <Icon viewBox="0 0 20 20">
                     <path d="M10 15h8c1 0 2-1 2-2V3c0-1-1-2-2-2H2C1 1 0 2 0 3v10c0 1 1 2 2 2h4v4l4-4zM5 7h2v2H5V7zm4 0h2v2H9V7zm4 0h2v2h-2V7z" />
                 </Icon>
                 <Label>Hovering my parent changes my style!</Label>
             </Link>
+            {/* Components we built so far */}
+            <Wrapper>
+                <Title> NavBar </Title>
+                {/* put navbar here */}
+            </Wrapper>
+            <Wrapper>
+                <Title> Card </Title>
+                {/* put card here */}
+            </Wrapper>
+            <Wrapper>
+                <Title> Buttons </Title>
+                {/* put buttons here */}
+            </Wrapper>
+            
         </div>
     );
 }
