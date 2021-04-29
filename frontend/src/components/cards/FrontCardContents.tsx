@@ -4,6 +4,7 @@ import BootstrapButton from "react-bootstrap/Button";
 import PropTypes from "prop-types";
 import ReactCardFlip from "react-card-flip";
 import { iMainCard } from "./MainCard";
+
 function FrontCardContents(props: iMainCard) {
   const ProfilePicture = styled.img`
     width: 120px;
