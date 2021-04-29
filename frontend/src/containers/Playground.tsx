@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import BootstrapButton from 'react-bootstrap/Button';
+import MainCard from '../components/cards/MainCard';
 
 interface iPlayground {
     test: false;
@@ -17,7 +18,7 @@ function Playground(props: iPlayground) {
     // Create a Wrapper component that'll render a <section> tag with some styles
     const Wrapper = styled.section`
     padding: 4em 0 4em 0;
-    background: papayawhip;
+    background: #E5E5E5;
     `;
 
     const Button = styled(BootstrapButton) <any>`
@@ -106,12 +107,20 @@ function Playground(props: iPlayground) {
             <Wrapper>
                 <Title> Card </Title>
                 {/* put card here */}
+                <CenterWrapper>
+                    <MainCard
+                        imageURL="https://avatars.githubusercontent.com/u/13604973?v=4"
+                        name="Deval Parikh"
+                        title="Software Engineer @ BusiCard"
+                        contactInfo={["123-456-7899", "dp@busicard.com", "12345 N Tantau Ave, Cupertino, CA 95014"]}
+                    />
+                </CenterWrapper>
             </Wrapper>
             <Wrapper>
                 <Title> Buttons </Title>
                 {/* put buttons here */}
             </Wrapper>
-            
+
         </div>
     );
 }
