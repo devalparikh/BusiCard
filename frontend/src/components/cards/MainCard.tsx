@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ReactCardFlip from 'react-card-flip';
 import FrontCardContents from './FrontCardContents';
 
-interface iMainCard {
+export interface iMainCard {
     imageURL: string;
     name: string;
     title: string;
@@ -45,7 +45,6 @@ function MainCard(props: iMainCard) {
             visibility: visible;
             opacity: 1;
             transition: visibility 0s, opacity 4s ease;
-
         }
     `;
 
@@ -80,10 +79,5 @@ function MainCard(props: iMainCard) {
         </>
     );
 }
-MainCard.defaultProps = {
-};
-
-MainCard.propTypes = {
-};
 
 export default MainCard;

@@ -3,15 +3,8 @@ import styled from "styled-components";
 import BootstrapButton from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import ReactCardFlip from 'react-card-flip';
-
-interface iFrontCardContents {
-    imageURL: string;
-    name: string;
-    title: string;
-    contactInfo: Array<string>;
-}
-
-function FrontCardContents(props: iFrontCardContents) {
+import { iMainCard } from './MainCard';
+function FrontCardContents(props: iMainCard) {
 
     const ProfilePicture = styled.img`
         width: 120px;
@@ -52,10 +45,5 @@ function FrontCardContents(props: iFrontCardContents) {
         </>
     );
 }
-FrontCardContents.defaultProps = {
-};
-
-FrontCardContents.propTypes = {
-};
 
 export default FrontCardContents;
