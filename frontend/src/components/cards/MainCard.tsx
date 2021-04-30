@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import BootstrapButton from "react-bootstrap/Button";
 import PropTypes from "prop-types";
 import ReactCardFlip from "react-card-flip";
 import FrontCardContents from "./FrontCardContents";
+import BackCardContents from "./BackCardContents";
 
 export interface iMainCard {
   imageURL: string;
@@ -12,70 +13,88 @@ export interface iMainCard {
   contactInfo: Array<string>;
 }
 
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Card = styled.div`
+  width: 350px;
+  height: 550px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 30px;
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transition: 0.5s ease;
+    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.4);
+  }
+`;
+
+const FlipText = styled.p`
+  color: dimgray;
+  bottom: -10%;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+
+  ${Card}:hover & {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 4s ease;
+  }
+`;
+
+const TempEditButton = styled.button`
+  margin: 60px;
+`;
+
 function MainCard(props: iMainCard) {
-  const Card = styled.div`
-    width: 350px;
-    height: 550px;
-    background: #ffffff;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 30px;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
-
-    &:hover {
-      transition: 0.5s ease;
-      box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.4);
-    }
-  `;
-
-  const FlipText = styled.p`
-    color: dimgray;
-    bottom: -10%;
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-
-    ${Card}:hover & {
-      visibility: visible;
-      opacity: 1;
-      transition: visibility 0s, opacity 4s ease;
-    }
-  `;
-
-  const ContactInfoSection = styled.div`
-    margin: 60px 0px 20px 0px;
-  `;
-
-  const ContactInfo = styled.p`
-    color: dimgray;
-  `;
-
-  const AllContactInfo = props.contactInfo.map((contactInfo, index) => {
-    return <ContactInfo key={index}>{contactInfo}</ContactInfo>;
-  });
+  useEffect(() => {
+    setBackCard(localStorage.getItem("backCardBusiCard") || "");
+  }, []);
 
   const [isFlipped, setIsFlipped] = useState(false);
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
+  const flipCard = () => {
+    if (!editMode) {
+      setIsFlipped(!isFlipped);
+    }
+  };
+
+  const [backCard, setBackCard] = useState("");
+  const saveBackCardData = () => {
+    localStorage.setItem("backCardBusiCard", backCard);
+  };
+
+  const [editMode, setEditMode] = useState(false);
+  const toggleEditMode = () => {
+    if (editMode) {
+      saveBackCardData();
+    }
+    setEditMode(!editMode);
   };
 
   return (
-    <>
+    <CardWrapper>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-        <Card onClick={handleClick}>
+        <Card onClick={flipCard}>
           <FrontCardContents {...props} />
-          <FlipText>click to flip!</FlipText>
+          {!editMode && <FlipText>click to flip!</FlipText>}
         </Card>
-        <Card onClick={handleClick}>
-          <ContactInfoSection>{AllContactInfo}</ContactInfoSection>
+        <Card onClick={flipCard}>
+          <BackCardContents
+            backCard={backCard}
+            setBackCard={setBackCard}
+            editMode={editMode}
+          />
         </Card>
       </ReactCardFlip>
-    </>
+      <TempEditButton onClick={toggleEditMode}>
+        {editMode ? "save" : "edit"}
+      </TempEditButton>
+    </CardWrapper>
   );
 }
 
