@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import BootstrapButton from "react-bootstrap/Button";
-import PropTypes from "prop-types";
 import ReactCardFlip from "react-card-flip";
 import FrontCardContents from "./FrontCardContents";
 import BackCardContents from "./BackCardContents";
@@ -58,9 +56,7 @@ function MainCard(props: iMainCard) {
 
   const [isFlipped, setIsFlipped] = useState(false);
   const flipCard = () => {
-    if (!editMode) {
-      setIsFlipped(!isFlipped);
-    }
+    !editMode && setIsFlipped(!isFlipped);
   };
 
   const [backCard, setBackCard] = useState("");
@@ -70,15 +66,14 @@ function MainCard(props: iMainCard) {
 
   const [editMode, setEditMode] = useState(false);
   const toggleEditMode = () => {
-    if (editMode) {
-      saveBackCardData();
-    }
+    editMode && saveBackCardData();
     setEditMode(!editMode);
   };
 
   return (
     <CardWrapper>
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+
+      <ReactCardFlip isFlipped={isFlipped}>
         <Card onClick={flipCard}>
           <FrontCardContents {...props} />
           {!editMode && <FlipText>click to flip!</FlipText>}
@@ -91,9 +86,11 @@ function MainCard(props: iMainCard) {
           />
         </Card>
       </ReactCardFlip>
+
       <TempEditButton onClick={toggleEditMode}>
         {editMode ? "save" : "edit"}
       </TempEditButton>
+      
     </CardWrapper>
   );
 }

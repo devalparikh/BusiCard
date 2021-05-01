@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { iMainCard } from "./MainCard";
 
@@ -36,16 +36,16 @@ const ContactInfo = styled.p`
   color: dimgray;
 `;
 
-function FrontCardContents(props: iMainCard) {
-  const AllContactInfo = props.contactInfo.map((contactInfo, index) => {
+function FrontCardContents({ contactInfo, imageURL, name, title }: iMainCard) {
+  const AllContactInfo = contactInfo.map((contactInfo, index) => {
     return <ContactInfo key={index}>{contactInfo}</ContactInfo>;
   });
 
   return (
     <FrontCardWrapper>
-      <ProfilePicture src={props.imageURL} />
-      <NameText>{props.name}</NameText>
-      <TitleText>{props.title}</TitleText>
+      <ProfilePicture src={imageURL} />
+      <NameText>{name}</NameText>
+      <TitleText>{title}</TitleText>
       <ContactInfoSection>{AllContactInfo}</ContactInfoSection>
     </FrontCardWrapper>
   );

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import 'react-quill/dist/quill.bubble.css'
+import "react-quill/dist/quill.bubble.css";
 import styled from "styled-components";
-import Parser from "html-react-parser";
 // @ts-ignore
 import MagicUrl from "quill-magic-url";
 Quill.register("modules/magicUrl", MagicUrl, true);
@@ -30,13 +29,23 @@ const BackCardWrapper = styled.div`
   }
 `;
 
-const TextEdit = styled(ReactQuill)``;
-
-const ViewBackCardData = styled.div`
-  padding: 70px 20px 20px 20px;
-  height: inherit;
-  overflow-y: scroll;
-`;
+const TextEditor = ({ backCard, setBackCard }: iBackCardContents) => (
+  <ReactQuill
+    theme="snow"
+    value={backCard}
+    onChange={setBackCard}
+    modules={{
+      magicUrl: true,
+      toolbar: [
+        ["bold", "italic", "underline", "link"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ color: [] }, { background: [] }],
+        [{ align: [] }],
+      ],
+    }}
+  />
+);
 
 function BackCardContents({
   backCard,
@@ -46,26 +55,9 @@ function BackCardContents({
   return (
     <BackCardWrapper>
       {editMode ? (
-        <TextEdit
-          theme="snow"
-          value={backCard}
-          onChange={setBackCard}
-          modules={{
-            magicUrl: true,
-            toolbar: [
-                ['bold', 'italic', 'underline', 'link'],
-                // ['blockquote', 'code-block'],
-                [{ list: 'ordered' }, { list: 'bullet' }],
-                [{ header: [1, 2, 3, 4, 5, 6, false] }],
-                [{ color: [] }, { background: [] }],
-                // ['clean'],
-                [{ align: [] }]
-              ]
-          }}
-        />
+        <TextEditor backCard={backCard} setBackCard={setBackCard} />
       ) : (
-        // <ViewBackCardData>{Parser(backCard as string)}</ViewBackCardData>
-        <TextEdit theme="bubble" value={backCard} readOnly />
+        <ReactQuill theme="bubble" value={backCard} readOnly />
       )}
     </BackCardWrapper>
   );
