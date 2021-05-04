@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Playground from "./containers/Playground";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Landing from "./containers/Landing";
 
 function App() {
