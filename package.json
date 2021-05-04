@@ -1,0 +1,32 @@
+{
+  "name": "busicard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "pretty-quick": "pretty-quick",
+    "prepare": "husky install",
+    "start": "cd frontend && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devalparikh/BusiCard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devalparikh/BusiCard/issues"
+  },
+  "homepage": "https://github.com/devalparikh/BusiCard#readme",
+  "devDependencies": {
+    "husky": "^6.0.0",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
