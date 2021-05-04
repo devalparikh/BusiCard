@@ -3,10 +3,13 @@ import "./App.css";
 import Playground from "./containers/Playground";
 import { Switch, Route } from "react-router-dom";
 import Landing from "./containers/Landing";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
   return (
     <div className="App">
+      <NavBar></NavBar>
+
       <Switch>
         <Route exact path="/">
           <Landing />
