@@ -9,11 +9,9 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          {/* TODO: Pass in array of categories */}
           <Landing />
         </Route>
         <Route exact path="/playground">
-          {/* TODO: Pass in array of categories */}
           <Playground test={false} />
         </Route>
       </Switch>
