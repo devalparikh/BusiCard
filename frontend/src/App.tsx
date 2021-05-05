@@ -7,16 +7,17 @@ import NavBar from "./components/navbar/NavBar";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
+      {/* Navbar */}
       <NavBar></NavBar>
 
       <Switch>
         <Route exact path="/">
           <Landing />
-        </Route>
+              </Route>
         <Route exact path="/playground">
-          <Playground test={false} />
-        </Route>
+    <Playground test={false} />
+                    </Route>
       </Switch>
     </div>
   );
