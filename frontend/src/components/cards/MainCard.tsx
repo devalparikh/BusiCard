@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ReactCardFlip from "react-card-flip";
+import Button from "../buttons/Button"
 import FrontCardContents from "./FrontCardContents";
 import BackCardContents from "./BackCardContents";
 
@@ -66,6 +67,7 @@ function MainCard(props: iMainCard) {
 
   const [editMode, setEditMode] = useState(false);
   const toggleEditMode = () => {
+    console.log("print")
     editMode && saveBackCardData();
     setEditMode(!editMode);
   };
@@ -87,9 +89,9 @@ function MainCard(props: iMainCard) {
         </Card>
       </ReactCardFlip>
 
-      <TempEditButton onClick={toggleEditMode}>
-        {editMode ? "save" : "edit"}
-      </TempEditButton>
+      <Button onClick={toggleEditMode}>
+        {editMode ? "Save" : "Edit"}
+      </Button>
       
     </CardWrapper>
   );

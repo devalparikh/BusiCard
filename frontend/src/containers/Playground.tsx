@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import BootstrapButton from "react-bootstrap/Button";
+import Button from '../components/buttons/Button';
 import MainCard from "../components/cards/MainCard";
 
 interface iPlayground {
@@ -20,20 +21,20 @@ const Wrapper = styled.section`
   background: #e5e5e5;
 `;
 
-const Button = styled(BootstrapButton)<any>`
-  /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.primary ? "palevioletred" : "white")};
-  color: ${(props) => (props.primary ? "white" : "palevioletred")};
+// const Button = styled(BootstrapButton)<any>`
+//   /* Adapt the colors based on primary prop */
+//   background: ${(props) => (props.primary ? "palevioletred" : "white")};
+//   color: ${(props) => (props.primary ? "white" : "palevioletred")};
 
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  &:hover {
-    background: black;
-  }
-`;
+//   font-size: 1em;
+//   margin: 1em;
+//   padding: 0.25em 1em;
+//   border: 2px solid palevioletred;
+//   border-radius: 3px;
+//   &:hover {
+//     background: black;
+//   }
+// `;
 
 const Input = styled.input`
   padding: 0.5em;
@@ -84,24 +85,8 @@ function Playground(props: iPlayground) {
   return (
     <div className="App">
       {/* Example Components */}
-      <Wrapper>
-        <Title> Hello World! </Title>
-      </Wrapper>
-      <Button>Normal</Button>
-      <Button primary>Primary</Button>
-      <CenterWrapper>
-        <Input placeholder="type something" />
-        <BootstrapButton>Bootstrap Button</BootstrapButton>
-      </CenterWrapper>
-      <Link href="#">
-        <Icon viewBox="0 0 20 20">
-          <path d="M10 15h8c1 0 2-1 2-2V3c0-1-1-2-2-2H2C1 1 0 2 0 3v10c0 1 1 2 2 2h4v4l4-4zM5 7h2v2H5V7zm4 0h2v2H9V7zm4 0h2v2h-2V7z" />
-        </Icon>
-        <Label>Hovering my parent changes my style!</Label>
-      </Link>
       {/* Components we built so far */}
       <Wrapper>
-        <Title> NavBar </Title>
         {/* put navbar here */}
       </Wrapper>
       <Wrapper>
@@ -123,6 +108,7 @@ function Playground(props: iPlayground) {
       <Wrapper>
         <Title> Buttons </Title>
         {/* put buttons here */}
+        <Button> test </Button>
       </Wrapper>
     </div>
   );
