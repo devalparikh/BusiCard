@@ -1,32 +1,30 @@
-import React from 'react';
-import "./Button.css";
+import React from "react";
+import styled from "styled-components";
+import BootstrapButton, { ButtonProps } from "react-bootstrap/Button";
 
-interface iButton {
-    onClick? ():any;
-    width?: string;
-    height?: string;
-    bcolor? : string;
-    color? : string;
-    text?: string;
-    navbar?: boolean;
-    toolbar?: boolean;
-    menu?: boolean;
-    children?: string;
+export interface iButton extends ButtonProps {
+  onClick?(): any;
+  children?: string;
 }
 
-function Button(props:iButton) {
-    const style = {
-        width: props.width != null ?  props.width : "",
-        height: props.height != null ?  props.height : "",
-        backgroundColor: props.bcolor != null ? props.bcolor : "",
-        color: props.color != null ?  props.color : "",
-    }
-    
-    return (
-        <div className="global-button" style={style} onClick={props.onClick}>
-            {props.children}
-        </div>
-    )
+const BasicButton = styled(BootstrapButton)<iButton>`
+  text-align: center;
+  transition: all 0.2s;
+  padding: 10px 20px;
+  margin: 20px;
+  margin: ${(props) => props.margin};
+`;
+
+function Button(props: iButton) {
+  return (
+    <BasicButton {...props} onClick={props.onClick}>
+      {props.children}
+    </BasicButton>
+  );
+}
+
+Button.defaultProps = {
+  variant: "dark",
 };
 
 export default Button;
