@@ -47,14 +47,14 @@ const FlipText = styled.p`
   }
 `;
 
-function MainCard({editMode, ...props}: iMainCard) {
+function MainCard({ editMode, ...props }: iMainCard) {
   useEffect(() => {
     setBackCard(localStorage.getItem("backCardBusiCard") || "");
   }, []);
 
   useEffect(() => {
     editMode && saveBackCardData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editMode]);
 
   const [isFlipped, setIsFlipped] = useState(false);
@@ -69,7 +69,6 @@ function MainCard({editMode, ...props}: iMainCard) {
 
   return (
     <CardWrapper>
-
       <ReactCardFlip isFlipped={isFlipped}>
         <Card onClick={flipCard}>
           <FrontCardContents {...props} />
@@ -83,7 +82,6 @@ function MainCard({editMode, ...props}: iMainCard) {
           />
         </Card>
       </ReactCardFlip>
-      
     </CardWrapper>
   );
 }
