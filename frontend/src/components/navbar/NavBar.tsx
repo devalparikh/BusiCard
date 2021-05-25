@@ -1,4 +1,5 @@
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
+import AuthButton from "../buttons/navbarButtons/AuthButton";
 
 const NavBar = () => {
   return (
@@ -9,7 +10,7 @@ const NavBar = () => {
         </Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link href="/playground">
-            <Button variant="outline-dark">Log Out</Button>
+            <AuthButton>Log Out</AuthButton>
           </Nav.Link>
         </Nav>
       </Navbar>

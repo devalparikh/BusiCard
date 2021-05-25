@@ -14,10 +14,10 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Landing />
-              </Route>
+        </Route>
         <Route exact path="/playground">
-    <Playground test={false} />
-                    </Route>
+          <Playground test={false} />
+        </Route>
       </Switch>
     </div>
   );

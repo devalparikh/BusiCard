@@ -3,12 +3,14 @@ import styled from "styled-components";
 import ReactCardFlip from "react-card-flip";
 import FrontCardContents from "./FrontCardContents";
 import BackCardContents from "./BackCardContents";
+import EditButton from "../buttons/EditButton";
 
 export interface iMainCard {
   imageURL: string;
   name: string;
   title: string;
   contactInfo: Array<string>;
+  editMode?: boolean;
 }
 
 const CardWrapper = styled.div`
@@ -45,14 +47,15 @@ const FlipText = styled.p`
   }
 `;
 
-const TempEditButton = styled.button`
-  margin: 60px;
-`;
-
-function MainCard(props: iMainCard) {
+function MainCard({ editMode, ...props }: iMainCard) {
   useEffect(() => {
     setBackCard(localStorage.getItem("backCardBusiCard") || "");
   }, []);
+
+  useEffect(() => {
+    editMode && saveBackCardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editMode]);
 
   const [isFlipped, setIsFlipped] = useState(false);
   const flipCard = () => {
@@ -64,15 +67,8 @@ function MainCard(props: iMainCard) {
     localStorage.setItem("backCardBusiCard", backCard);
   };
 
-  const [editMode, setEditMode] = useState(false);
-  const toggleEditMode = () => {
-    editMode && saveBackCardData();
-    setEditMode(!editMode);
-  };
-
   return (
     <CardWrapper>
-
       <ReactCardFlip isFlipped={isFlipped}>
         <Card onClick={flipCard}>
           <FrontCardContents {...props} />
@@ -86,13 +82,12 @@ function MainCard(props: iMainCard) {
           />
         </Card>
       </ReactCardFlip>
-
-      <TempEditButton onClick={toggleEditMode}>
-        {editMode ? "save" : "edit"}
-      </TempEditButton>
-      
     </CardWrapper>
   );
 }
+
+MainCard.defaultProps = {
+  editMode: false,
+};
 
 export default MainCard;
