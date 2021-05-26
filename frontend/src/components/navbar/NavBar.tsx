@@ -5,11 +5,11 @@ const NavBar = () => {
   return (
     <>
       <Navbar bg="light" variant="light">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <b>BUSICARD</b>
         </Navbar.Brand>
         <Nav className="ml-auto">
-          <Nav.Link href="#home">
+          <Nav.Link href="/playground">
             <AuthButton>Log Out</AuthButton>
           </Nav.Link>
         </Nav>
