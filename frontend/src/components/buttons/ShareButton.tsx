@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button, { iButton } from "./Button";
 
-const StyledEditButton = styled(Button)`
+const StyledShareButton = styled(Button)`
   background: #343a40;
   color: #ffffff;
   border: none;
@@ -11,7 +11,7 @@ const StyledEditButton = styled(Button)`
 `;
 
 function ShareButton(props: iButton) {
-  return <StyledEditButton {...props} />;
+  return <StyledShareButton {...props} />;
 }
 
 export default ShareButton;
