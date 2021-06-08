@@ -3,6 +3,7 @@ import styled from "styled-components";
 import EditButton from "../components/buttons/EditButton";
 import ShareButton from "../components/buttons/ShareButton";
 import MainCard from "../components/cards/MainCard";
+import EditSidebar from "../components/edit/EditSidebar";
 
 interface iPlayground {
   test: false;
@@ -26,21 +27,29 @@ const ButtonGroupWrapper = styled.div`
 
 function Playground(props: iPlayground) {
   const [editMode, setEditMode] = useState(false);
+  const [userInfo, editUserInfo] = useState({
+    name: "Deval Parikh",
+    header: "Software Engineer @ BusiCard",
+    phoneNumber: "123-456-7899",
+    email: "dp@busicard.com",
+    address: "12345 N Tantau Ave, Cupertino, CA 95014"
+  })
   const toggleEditMode = () => {
     setEditMode(!editMode);
   };
   return (
     <div className="App">
       <Wrapper>
+      <EditSidebar userInfo={userInfo} editUserInfo={editUserInfo}></EditSidebar>
         <CenterWrapper>
           <MainCard
             imageURL="https://avatars.githubusercontent.com/u/13604973?v=4"
-            name="Deval Parikh"
-            title="Software Engineer @ BusiCard"
+            name={userInfo.name}
+            title={userInfo.header}
             contactInfo={[
-              "123-456-7899",
-              "dp@busicard.com",
-              "12345 N Tantau Ave, Cupertino, CA 95014",
+              userInfo.phoneNumber,
+              userInfo.email,
+              userInfo.address,
             ]}
             editMode={editMode}
           />

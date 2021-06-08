@@ -16,7 +16,6 @@ function App() {
           <Landing />
         </Route>
         <Route exact path="/playground">
-          <EditSidebar></EditSidebar>
           <Playground test={false} />
         </Route>
       </Switch>
