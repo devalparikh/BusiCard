@@ -16,7 +16,6 @@ const AuthWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 4em 0 4em 0;
-
 `;
 
 const Auth = (props: iAuth) => {
