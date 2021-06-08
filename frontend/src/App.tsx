@@ -5,13 +5,13 @@ import { Switch, Route } from "react-router-dom";
 import Landing from "./containers/Landing";
 import NavBar from "./components/navbar/NavBar";
 import Auth, { AuthTypes } from "./containers/Auth";
+import EditSidebar from './components/edit/EditSidebar';
 
 function App() {
   return (
     <div className="App">
       {/* Navbar */}
       <NavBar></NavBar>
-
       <Switch>
         <Route exact path="/">
           <Landing />
@@ -23,6 +23,7 @@ function App() {
           <Auth type={AuthTypes.Signup} />
         </Route>
         <Route exact path="/playground">
+          <EditSidebar></EditSidebar>
           <Playground test={false} />
         </Route>
       </Switch>
