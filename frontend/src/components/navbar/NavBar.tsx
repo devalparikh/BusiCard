@@ -1,5 +1,5 @@
 import { Navbar, Nav } from "react-bootstrap";
-import AuthButton from "../buttons/navbarButtons/AuthButton";
+import AuthButton from "../buttons/navbarButtons/AuthNavButton";
 
 const NavBar = () => {
   return (

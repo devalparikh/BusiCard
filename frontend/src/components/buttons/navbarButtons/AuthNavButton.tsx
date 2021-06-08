@@ -6,8 +6,8 @@ const StyledEditButton = styled(Button)`
   margin: 0px;
 `;
 
-function AuthButton(props: iButton) {
+function AuthNavButton(props: iButton) {
   return <StyledEditButton variant="outline-dark" {...props} />;
 }
 
-export default AuthButton;
+export default AuthNavButton;

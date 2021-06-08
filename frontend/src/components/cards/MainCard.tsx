@@ -13,12 +13,12 @@ export interface iMainCard {
   editMode?: boolean;
 }
 
-const CardWrapper = styled.div`
+export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const Card = styled.div`
+export const Card = styled.div`
   width: 350px;
   height: 550px;
   background: #ffffff;
